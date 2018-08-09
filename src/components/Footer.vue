@@ -33,19 +33,18 @@ footer {
     width: 100%;
 }
 .footer-logo {
-    margin: 10px;
+    margin: .5rem;
     vertical-align: middle;
 }
 .footer-list {
     display: flex;
     justify-content: flex-end;
     list-style: none;
-    margin: 0;
 }
 .footer-list-item {
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 0 .8rem;
 }
 </style>

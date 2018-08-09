@@ -3,12 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueFire from 'vuefire'
 import Firebase from 'firebase'
 import 'firebase/firestore'
 
 // import firebase config keys
 import { config } from './admin/firebaseAuth.js'
 
+Vue.use(VueFire)
 let app
 export const firebase = Firebase.initializeApp(config)
 export const db = firebase.firestore()

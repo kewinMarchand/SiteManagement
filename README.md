@@ -2,41 +2,66 @@
 
 > A Vue.js / Firebase project dedicated to site management
 
-## install vue command line interface
-npm install -g vue-cli
+### install vue command line interface
 
-## init project with webpack template
-vue init webpack site-management
+> npm install -g vue-cli
 
-## update dependencies
-npm install
-npm audit fix
+### init project with webpack template
 
-## create home layout
-src/layouts/Home.vue
+> vue init webpack site-management
 
-## create Adminpanel layout
-src/admin/Adminpanel.vue
+### update dependencies
 
-## create Navbar & Footer components
-src/components/Navbar.vue
-src/components/Footer.vue
+> npm install
 
-## install Firebase
-npm install --save firebase
+>  npm audit fix
 
-## create Login & SignUp layout
-src/layouts/Login.vue
-src/layouts/SignUp.vue
+### create home layout
 
-## add LogOut button to Navbar
+> src/layouts/Home.vue
 
-## add firebase config keys
-src/admin/firebaseAuth.js
+### create Adminpanel layout
 
-## add autentication logic
-src/main.js
-src/router/index.js
-src/layouts/Login.vue
-src/layouts/SignUp.vue
-src/components/Navbar.vue
+> src/admin/Adminpanel.vue
+
+### create Navbar & Footer components
+
+> src/components/Navbar.vue
+
+> src/components/Footer.vue
+
+### install Firebase
+
+> npm install --save firebase
+
+### create Login & SignUp layout
+
+> src/layouts/Login.vue
+
+> src/layouts/SignUp.vue
+
+### add Logout button to Navbar
+
+### add firebase config keys
+
+> src/admin/firebaseAuth.js
+
+### add autentication logic
+
+> src/main.js
+
+> src/router/index.js
+
+> src/layouts/Login.vue
+
+> src/layouts/SignUp.vue
+
+> src/components/Navbar.vue
+
+### install vueFire
+
+> npm install vuefire@next firebase --save
+
+### create TodoList component & add to admin page
+
+> src/components/TodoList.vue

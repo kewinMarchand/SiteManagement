@@ -6,9 +6,11 @@
         <form class="connection-form">
             <input class="connection-input" type="email" v-model="email" placeholder="Votre email" autocomplete="email">
             <input class="connection-input" type="password" v-model="password" placeholder="Votre mot de passe" autocomplete="current-password">
-            <button class="connection-btn" type="button" @click="signUp">Je m'inscris</button>
+            <button class="btn connection-btn" type="button" @click="signUp">Je m'inscris</button>
         </form>
-        <span class="connection-alert" v-if="errMessage">{{ errMessage }}</span>
+        <transition name="fade">
+          <span class="connection-alert" v-if="errMessage">{{ errMessage }}</span>
+        </transition>
         <p class="connection-go-to">Retournez à la page de <router-link to="/login">connexion</router-link></p>
     </section>
 </template>

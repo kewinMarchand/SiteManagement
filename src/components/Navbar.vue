@@ -12,7 +12,7 @@
                 <router-link to="/admin">admin</router-link>
             </li>
             <li class="navbar-list-item">
-                <button class="navbar-btn" type="button" @click="logOut">Déconnexion</button>
+                <button class="btn navbar-btn" type="button" @click="logOut">Déconnexion</button>
             </li>
         </ul>
     </nav>
@@ -57,7 +57,6 @@ export default {
     flex-grow: 1;
     justify-content: flex-end;
     list-style: none;
-    margin: 0;
 }
 .navbar-list-item {
     align-items: center;
