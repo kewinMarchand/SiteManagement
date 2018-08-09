@@ -20,14 +20,5 @@ export default {
 </script>
 
 <style scoped>
-.section-header {
-  padding: 1.25rem;
-}
-.section-header-title {
-  font-size: 2rem;
-}
-.section-header-subtitle {
-  font-weight: normal;
-  margin: 1.5rem;
-}
+
 </style>

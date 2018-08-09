@@ -14,3 +14,6 @@ npm audit fix
 
 ## create home layout
 src/layouts/Home.vue
+
+## create Adminpanel layout
+src/admin/Adminpanel.vue

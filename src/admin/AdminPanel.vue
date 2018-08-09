@@ -1,6 +1,8 @@
 <template>
   <section class="adminPanel">
-      <h1 class="header-title">Page d'administration du site</h1>
+    <header class="section-header">
+      <h1 class="section-header-title">Page d'administration du site</h1>
+    </header>
   </section>
 </template>
 
