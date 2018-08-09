@@ -38,7 +38,7 @@ export default {
 
 <style scoped>
 .navbar {
-    background: var(--textColor);
+    background: #AAA;
     display: flex;
     justify-content: space-between;
     position: fixed;
@@ -65,7 +65,7 @@ export default {
     padding: 0 .8rem;
 }
 .navbar-list-item a {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     text-transform: capitalize;
 }
 a:hover {
@@ -73,11 +73,11 @@ a:hover {
     cursor: pointer;
 }
 .navbar-btn {
-    appearance: none;
     background: transparent;
     border: none;
+    box-shadow: none;
     color: #FFF;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     padding: .4rem;
 }
 .navbar-btn:hover {

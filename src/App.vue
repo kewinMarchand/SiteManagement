@@ -2,7 +2,7 @@
   <div id="app">
     <Navbar/>
     <figure id="appFigure">
-      <img id="appLogo" src="./assets/logo.png">
+      <img id="appLogo" src="./assets/logo.png" alt="Logo de siteManagement">
     </figure>
     <main id="appMain">
       <router-view/>
@@ -44,25 +44,97 @@ html {
   font-size: calc(1em * .625);
 }
 body {
-  font-size: 1em;
-  height: 100%
+  height: 100%;
+  width: 100%;
 }
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--textColor);
   font-family: Arial, sans-serif;
+  font-size: 1em;
   height: 100%;
+  letter-spacing: .2rem;
   padding: 5rem 0;
   position: relative;
   text-align: center;
+  width: 100%;
 }
+h1 {
+  font-size: 2rem;
+}
+h2 {
+ font-size: 1.8rem;
+}
+h3 {
+  font-size: 1.7rem;
+}
+h4 {
+ font-size: 1.6rem;
+}
+h5 {
+  font-size: 1.5rem;
+}
+h6 {
+  font-size: 1.4rem;
+}
+p {
+  font-size: 1.4rem;
+}
+span {
+  font-size: 1.4rem;
+}
+input {
+  font-size: 1.6rem;
+}
+::placeholder {
+  font-size: 1.3rem;
+  letter-spacing: .3rem;
+}
+/* Liens */
+a {
+  color: var(--primaryColor);
+  font-size: 1.4em;
+  text-decoration: none;
+  transition: color .5s;
+}
+a:hover {
+  color: var(--textColor);
+  cursor: pointer;
+}
+/* bouttons */
+.btn {
+  background: transparent;
+  border: 1px solid var(--primaryColor);
+  border-radius: .2rem;
+  box-shadow: 0 0 .1rem var(--primaryColor);
+  color: var(--primaryColor);
+  cursor: pointer;
+  font-size: 1.4rem;
+  margin: 1rem;
+  padding: .5rem 1rem;
+}
+.btn:focus {
+  box-shadow: inset 0 0 .1rem var(--primaryColor);
+  outline: 1px solid var(--primaryColor);
+}
+/* Texte pour lecteurs d'ecran */
+.sr-text {
+  display: none;
+}
+@media speech {
+  .sr-text {
+    display: block;
+  }
+}
+/* Logo en header */
 #appFigure {
   padding: 6rem;
 }
 #appLogo {
   max-width: 80%;
 }
+/* Main */
 @media screen and (min-width: 768px) {
   #appMain {
     margin: 0 auto 3.5rem auto;
@@ -70,6 +142,7 @@ body {
     min-height: 100vh;
   }
 }
+/* Sections */
 .section-header {
   padding: 1.25rem;
 }
@@ -84,23 +157,7 @@ body {
   font-size: 1.6rem;
   margin: 1.8rem;
 }
-a {
-  color: var(--primaryColor);
-  text-decoration: none;
-}
-a:hover {
-  color: var(--textColor);
-  cursor: pointer;
-}
-/* Texte pour lecteurs d'ecran */
-.sr-text {
-  display: none;
-}
-@media speech {
-  .sr-text {
-    display: block;
-  }
-}
+/* Forms */
 .connection-form,
 .todo-form {
     margin-bottom: 1rem;
@@ -113,47 +170,43 @@ a:hover {
     padding: 1rem;
     min-width: 60%;
     max-width: 80%;
+    text-align: center;
 }
+.connection-input:focus,
 .todo-input:focus {
-  border: none;
-  outline: 1px solid var(--primaryColor);
-}
-.btn {
-  background: transparent;
-  border: 1px solid var(--primaryColor);
-  border-radius: .2rem;
-  box-shadow: 0 0 .2rem var(--primaryColor);
-  color: var(--primaryColor);
-  cursor: pointer;
-  font-size: 1.2rem;
-  margin: 1rem;
-  padding: .5rem 1rem;
-}
-.btn:focus {
-  border: none;
-  box-shadow: inset 0 0 .2rem var(--primaryColor);
+  border: 2px solid transparent;
   outline: 1px solid var(--primaryColor);
 }
 .connection-alert,
 .todo-alert {
-    background: rgba(255, 0, 0, .3);
+    background: rgba(255, 0, 0, .25);
     border: 1px solid rgb(255, 0, 0);
     border-radius: .2rem;
     display: block;
-    font-size: 1rem;
-    line-height: 2rem;
+    font-size: 1.4rem;
+    min-height: 2.5rem;
+    line-height: 2.5rem;
     margin: 1rem auto;
     max-width: 61.8%;
+    padding: 1rem;
+}
+.todo-alert-close {
+  cursor: pointer;
+  float: right;
+  margin-right: 2rem;
 }
 .connection-go-to {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     margin-top: 1.5rem;
+}
+.connection-go-to a{
+    font-size: 1.6rem;
 }
 /* Effets de transitions */
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
 </style>

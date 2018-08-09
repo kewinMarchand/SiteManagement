@@ -9,12 +9,12 @@
             <button class="btn todo-btn" type="button" @click="addTodo">Ajoutez la tâche</button>
         </form>
         <transition name="fade">
-            <span class="todo-alert" v-if="errMessage">{{ errMessage }}</span>
+            <p class="todo-alert" v-if="errMessage">{{ errMessage }} <span class="todo-alert-close" @click="closeAlert">X</span> </p>
         </transition>
         <div class="todo-container">
             <div class="todo-wrapper">
                 <h4 class="section-inter-title">Liste des tâches en cours</h4>
-                <ul class="todo-list">
+                <transition-group tag="ul" class="todo-list" name="slide">
                     <li class="todo-list-item" v-for="(todo, index) in todos" :key="index" :class="{done: todo.done}">
                         <div class="todo-list-item-body">
                             <span class="todo-credits">Ajouté par {{ todo.author }} le {{ todo.createdAt }}</span>
@@ -23,14 +23,16 @@
                                 <button class="btn todo-btn" type="button" @click="todo.editing = !todo.editing" v-if="!todo.editing">Editer la tâche</button>
                                 <button class="btn todo-btn" type="button" @click="updateTodo(todo)" v-else>Valider la modification</button>
                                 <button class="btn todo-btn" type="button" @click="storeTodo(todo)">Retirer la tâche</button>
+                                <button class="btn todo-btn" type="button" @click="todo.done = !todo.done" v-if="!todo.done">Valider la tâche</button>
+                                <button class="btn todo-btn" type="button" @click="todo.done = !todo.done" v-else>Annuler la validation</button>
                             </div>
                         </div>
                     </li>
-                </ul>
+                </transition-group>
             </div>
             <div class="todo-wrapper">
                 <h4 class="section-inter-title">Liste des tâches retirées</h4>
-                <ul class="todo-list">
+                <transition-group tag="ul" class="todo-list" name="slide">
                     <li class="todo-list-item" v-for="(todo, index) in deletedTodos" :key="index" :class="{done: todo.done}">
                         <div class="todo-list-item-body">
                             <span class="todo-credits">Ajouté par {{ todo.author }} le {{ todo.createdAt }}<br>retiré par {{ todo.destructor }} le {{ todo.deletedAt }}</span>
@@ -41,7 +43,7 @@
                             </div>
                         </div>
                     </li>
-                </ul>
+                </transition-group>
             </div>
         </div>
     </section>
@@ -67,6 +69,9 @@ export default {
     }
   },
   methods: {
+    closeAlert () {
+      this.errMessage = ''
+    },
     addTodo () {
       const userEmail = firebase.auth().currentUser.email
       const createdAt = new Date().toLocaleString('fr-FR', { timeZone: 'UTC' })
@@ -75,6 +80,7 @@ export default {
         db.collection('todos').add({
           text: this.todoText,
           author: userEmail,
+          done: false,
           createdAt,
           editing: false })
         this.todoText = ''
@@ -92,6 +98,7 @@ export default {
       db.collection('deletedTodos').add({
         text: todo.text,
         author: todo.author,
+        done: todo.done,
         destructor: userEmail,
         createdAt: todo.createdAt,
         deletedAt})
@@ -103,6 +110,7 @@ export default {
       db.collection('todos').add({
         text: todo.text,
         author: todo.author,
+        done: todo.done,
         createdAt: todo.createdAt,
         editing: false })
         .then(
@@ -132,6 +140,15 @@ export default {
 }
 .todo-list-item {
     margin-bottom: .5rem;
+}
+.todo-list-item.done {
+    background: #DDD;
+}
+.todo-list-item.done input,
+.todo-list-item.done p {
+    background: #DDD;
+    text-decoration: line-through;
+    text-decoration-color: var(--primaryColor);
 }
 .todo-list-item-body {
     border: 1px solid var(--primaryColor);

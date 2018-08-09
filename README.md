@@ -65,3 +65,8 @@
 ### create TodoList component & add to admin page
 
 > src/components/TodoList.vue
+
+### add metas & manifest
+
+> index.html
+> static/manifest.json
