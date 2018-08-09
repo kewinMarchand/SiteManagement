@@ -17,3 +17,7 @@ src/layouts/Home.vue
 
 ## create Adminpanel layout
 src/admin/Adminpanel.vue
+
+## create Navbar & Footer components
+src/components/Navbar.vue
+src/components/Footer.vue

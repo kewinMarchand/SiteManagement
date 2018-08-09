@@ -1,17 +1,26 @@
 <template>
   <div id="app">
+    <Navbar/>
     <figure id="appFigure">
       <img id="appLogo" src="./assets/logo.png">
     </figure>
     <main id="appMain">
       <router-view/>
     </main>
+    <Footer/>
   </div>
 </template>
 
 <script>
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Navbar,
+    Footer
+  }
 }
 </script>
 
@@ -22,15 +31,24 @@ export default {
   margin: 0;
   padding: 0;
 }
+html {
+  font-size: .625em;
+  font-size: calc(1em * .625);
+}
+html {
+  font-size: 1em;
+}
 #app {
-  font-family: Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+  font-family: Arial, sans-serif;
+  margin-top: 3rem;
+  position: relative;
+  text-align: center;
 }
 #appFigure {
-  margin: 3rem;
+  padding: 3rem;
 }
 #appLogo {
   max-width: 80%;
@@ -51,5 +69,13 @@ export default {
 .section-header-subtitle {
   font-weight: normal;
   margin: 1.5rem;
+}
+a {
+  color: #d77301;
+  text-decoration: none;
+}
+a:hover {
+  color: #333;
+  cursor: pointer;
 }
 </style>
