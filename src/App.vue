@@ -20,11 +20,18 @@ export default {
   components: {
     Navbar,
     Footer
+  },
+  data () {
+    return { }
   }
 }
 </script>
 
 <style>
+:root {
+  --primaryColor: #d77301;
+  --textColor: #2c3e50;
+}
 * {
   box-sizing: border-box;
   list-style: none;
@@ -35,28 +42,29 @@ html {
   font-size: .625em;
   font-size: calc(1em * .625);
 }
-html {
+body {
   font-size: 1em;
+  height: 100%
 }
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: var(--textColor);
   font-family: Arial, sans-serif;
-  margin-top: 3rem;
+  height: 100%;
   position: relative;
   text-align: center;
 }
 #appFigure {
-  padding: 3rem;
+  padding: 6rem;
 }
 #appLogo {
   max-width: 80%;
 }
 @media screen and (min-width: 768px) {
   #appMain {
-    margin: auto;
-    max-width: 61,8%;
+    margin: 3rem auto;
+    max-width: 61.8%;
     min-height: 100vh;
   }
 }
@@ -68,14 +76,52 @@ html {
 }
 .section-header-subtitle {
   font-weight: normal;
-  margin: 1.5rem;
+  margin: 1.8rem;
 }
 a {
-  color: #d77301;
+  color: var(--primaryColor);
   text-decoration: none;
 }
 a:hover {
-  color: #333;
+  color: var(--textColor);
   cursor: pointer;
+}
+.connection-form {
+    margin-bottom: 1rem;
+}
+.connection-input {
+    display: block;
+    margin: 1.5rem auto;
+    padding: 1rem;
+    min-width: 60%;
+}
+.connection-btn {
+    background: transparent;
+    border: 1px solid var(--primaryColor);
+    border-radius: .2rem;
+    box-shadow: 0 0 .2rem var(--primaryColor);
+    color: var(--primaryColor);
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin: 1rem;
+    padding: .5rem 1rem;
+}
+.connection-btn:focus {
+    box-shadow: inset 0 0 .5rem var(--primaryColor);
+    outline: 1px solid var(--primaryColor);
+}
+.connection-alert {
+    background: rgba(255, 0, 0, .3);
+    border: 1px solid rgb(255, 0, 0);
+    border-radius: .2rem;
+    display: block;
+    font-size: 0.6rem;
+    line-height: 2rem;
+    margin: 1rem auto;
+    max-width: 61.8%;
+}
+.connection-go-to {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
 }
 </style>

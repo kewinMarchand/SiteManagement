@@ -1,33 +1,44 @@
 <template>
     <nav class="navbar">
-        <router-link to="/">
+        <router-link to="/accueil">
             <img class="navbar-logo" src="../assets/logo.png" height="42" title="Site management">
-            <span>Site management</span>
+            <span class="navbar-brand">Site management</span>
         </router-link>
         <ul class="navbar-list">
             <li class="navbar-list-item">
-                <router-link to="/">accueil</router-link>
+                <router-link to="/accueil">accueil</router-link>
             </li>
             <li class="navbar-list-item">
                 <router-link to="/admin">admin</router-link>
+            </li>
+            <li class="navbar-list-item">
+                <button class="navbar-btn" type="button" @click="logOut">Déconnexion</button>
             </li>
         </ul>
     </nav>
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
   name: 'Navbar',
   data () {
-    return { }
+    return {}
+  },
+  methods: {
+    logOut () {
+      firebase.auth().signOut().then(
+        () => { this.$router.replace('login') }
+      )
+    }
   }
 }
 </script>
 
 <style scoped>
 .navbar {
-    background: #333;
-    color: #333;
+    background: var(--textColor);
     display: flex;
     justify-content: space-between;
     position: fixed;
@@ -35,8 +46,11 @@ export default {
     width: 100%;
 }
 .navbar-logo {
-    margin: 10px;
+    margin: .5rem;
     vertical-align: middle;
+}
+.navbar-brand {
+    font-size: 1.4rem;
 }
 .navbar-list {
     display: flex;
@@ -49,14 +63,28 @@ export default {
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 0 .8rem;
 }
 .navbar-list-item a {
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     text-transform: capitalize;
 }
 a:hover {
     color: #FFF;
     cursor: pointer;
+}
+.navbar-btn {
+    appearance: none;
+    background: transparent;
+    border: none;
+    color: #FFF;
+    font-size: 1.2rem;
+    padding: .4rem;
+}
+.navbar-btn:hover {
+    color: var(--primaryColor);
+}
+.navbar-btn:focus {
+    outline: 1px solid var(--primaryColor);
 }
 </style>

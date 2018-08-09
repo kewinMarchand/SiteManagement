@@ -3,13 +3,28 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Firebase from 'firebase'
+import 'firebase/firestore'
+
+// import firebase config keys
+import { config } from './admin/firebaseAuth.js'
+
+let app
+export const firebase = Firebase.initializeApp(config)
+export const db = firebase.firestore()
+const settings = {timestampsInSnapshots: true}
+db.settings(settings)
 
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
+firebase.auth().onAuthStateChanged(function (user) {
+  if (!app) {
+    app = new Vue({
+      el: '#app',
+      template: '<App/>',
+      components: { App },
+      router
+    })
+  }
 })

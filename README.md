@@ -21,3 +21,22 @@ src/admin/Adminpanel.vue
 ## create Navbar & Footer components
 src/components/Navbar.vue
 src/components/Footer.vue
+
+## install Firebase
+npm install --save firebase
+
+## create Login & SignUp layout
+src/layouts/Login.vue
+src/layouts/SignUp.vue
+
+## add LogOut button to Navbar
+
+## add firebase config keys
+src/admin/firebaseAuth.js
+
+## add autentication logic
+src/main.js
+src/router/index.js
+src/layouts/Login.vue
+src/layouts/SignUp.vue
+src/components/Navbar.vue
