@@ -66,7 +66,32 @@
 
 > src/components/TodoList.vue
 
-### add metas & manifest
+### add metas & manifest & add styles
 
 > index.html
+
 > static/manifest.json
+
+### create Chat component & add to admin page
+
+> src/components/Chat.vue
+
+### install Storybook & test it
+
+> npm i -g @storybook/cli
+
+> getstorybook
+
+### create Profil & GitHub layout
+
+> src/components/Profil.vue
+
+> src/components/GitHub.vue
+
+### init & deploy Firebase project
+
+> firebase login
+
+> firebase init
+
+> firebase deploy

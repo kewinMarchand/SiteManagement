@@ -18,9 +18,9 @@ const settings = {timestampsInSnapshots: true}
 db.settings(settings)
 
 Vue.config.productionTip = false
-
+firebase.auth().languageCode = 'fr'
 /* eslint-disable no-new */
-firebase.auth().onAuthStateChanged(function (user) {
+firebase.auth().onAuthStateChanged(user => {
   if (!app) {
     app = new Vue({
       el: '#app',

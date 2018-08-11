@@ -4,14 +4,14 @@
             <h3 class="section-header-title">Connexion</h3>
         </header>
         <form class="connection-form">
-          <label for="connectionEmail" class="sr-text">Entrez votre email</label>
-          <input class="connection-input" id="connectionEmail" type="email" v-model="email" placeholder="Entrez votre email" autocomplete="email">
-          <label for="connectionEmail" class="sr-text">Entrez votre mot de passe</label>
-          <input class="connection-input" id="connectionPassword" type="password" v-model="password" placeholder="Entrez votre mot de passe" autocomplete="current-password">
-          <button class="btn connection-btn" type="button" @click="signIn">Je me connecte</button>
+          <label for="loginEmail" class="sr-text">Entrez votre email</label>
+          <input class="connection-input" id="loginEmail" type="email" v-model="email" placeholder="Entrez votre email" autocomplete="email">
+          <label for="loginPassword" class="sr-text">Entrez votre mot de passe</label>
+          <input class="connection-input" id="loginPassword" type="password" v-model="password" placeholder="Entrez votre mot de passe" autocomplete="current-password">
+          <button class="btn" type="button" @click="signIn">Je me connecte</button>
         </form>
         <transition name="fade">
-          <span class="connection-alert" v-if="errMessage">{{ errMessage }}</span>
+          <span class="alert alert-error connection-alert" v-if="errMessage">{{ errMessage }}</span>
         </transition>
         <p class="connection-go-to">Pas encore inscrit ? <router-link to="/sign-up">Créez un compte</router-link></p>
     </section>

@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <Navbar/>
-    <figure id="appFigure">
-      <img id="appLogo" src="./assets/logo.png" alt="Logo de siteManagement">
-    </figure>
+    <Navbar :user="authUser"/>
     <main id="appMain">
       <router-view/>
     </main>
@@ -12,6 +9,7 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
@@ -22,15 +20,25 @@ export default {
     Footer
   },
   data () {
-    return { }
+    return {
+      appTitle: 'Site management',
+      appSubtitle: 'A Vue.js / Firebase project dedicated to site management',
+      authUser: []
+    }
+  },
+  created () {
+    firebase.auth().onAuthStateChanged(user => {
+      this.authUser = user
+    })
   }
 }
 </script>
 
 <style>
 :root {
-  --primaryColor: #d77301;
+  --primaryColor: #F77301;
   --textColor: #2c3e50;
+  --textFont: Arial, sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -51,7 +59,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--textColor);
-  font-family: Arial, sans-serif;
+  font-family: var(--textFont);
   font-size: 1em;
   height: 100%;
   letter-spacing: .2rem;
@@ -81,11 +89,27 @@ h6 {
 p {
   font-size: 1.4rem;
 }
-span {
+span, figcaption {
   font-size: 1.4rem;
 }
 input {
   font-size: 1.6rem;
+}
+input[type=text],
+input[type=email],
+input[type=password],
+textarea {
+  display: block;
+  font-family: var(--textFont);
+  margin: 1.5rem auto;
+  padding: 1rem;
+  min-width: 60%;
+  max-width: 80%;
+  text-align: center;
+}
+input:focus {
+  border: 2px solid transparent;
+  outline: 1px solid var(--primaryColor);
 }
 ::placeholder {
   font-size: 1.3rem;
@@ -113,6 +137,9 @@ a:hover {
   font-size: 1.4rem;
   margin: 1rem;
   padding: .5rem 1rem;
+}
+.btn:hover {
+    color: var(--textColor);
 }
 .btn:focus {
   box-shadow: inset 0 0 .1rem var(--primaryColor);
@@ -155,40 +182,40 @@ a:hover {
 }
 .section-inter-title {
   font-size: 1.6rem;
-  margin: 1.8rem;
+  margin: 4rem 0 3rem 0;
 }
 /* Forms */
-.connection-form,
-.todo-form {
-    margin-bottom: 1rem;
+.form {
+  border: 1px solid var(--primaryColor);
+  border-radius: .2rem;
+  margin-bottom: 10rem;
+  padding: 2rem;
 }
-.connection-input,
-.todo-input,
 .todo-text {
-    display: block;
-    margin: 1.5rem auto;
-    padding: 1rem;
-    min-width: 60%;
-    max-width: 80%;
-    text-align: center;
+  display: block;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  min-width: 60%;
+  max-width: 80%;
+  text-align: center;
 }
-.connection-input:focus,
-.todo-input:focus {
-  border: 2px solid transparent;
-  outline: 1px solid var(--primaryColor);
+.alert {
+  border-radius: .2rem;
+  display: block;
+  font-size: 1.4rem;
+  min-height: 2.5rem;
+  line-height: 2.5rem;
+  margin: 1rem auto;
+  padding: 1rem;
 }
-.connection-alert,
-.todo-alert {
-    background: rgba(255, 0, 0, .25);
-    border: 1px solid rgb(255, 0, 0);
-    border-radius: .2rem;
-    display: block;
-    font-size: 1.4rem;
-    min-height: 2.5rem;
-    line-height: 2.5rem;
-    margin: 1rem auto;
-    max-width: 61.8%;
-    padding: 1rem;
+.alert-error {
+  background: rgba(255, 0, 0, .25);
+  border: 1px solid rgb(255, 0, 0);
+}
+.alert-info {
+  background: rgb(0, 255, 55, .25);
+  border: 1px solid rgb(0, 255, 55);
+
 }
 .todo-alert-close {
   cursor: pointer;
@@ -196,11 +223,11 @@ a:hover {
   margin-right: 2rem;
 }
 .connection-go-to {
-    font-size: 1.6rem;
-    margin-top: 1.5rem;
+  font-size: 1.6rem;
+  margin-top: 1.5rem;
 }
 .connection-go-to a{
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 /* Effets de transitions */
 .fade-enter-active, .fade-leave-active {

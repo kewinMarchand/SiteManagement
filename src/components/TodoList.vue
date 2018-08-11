@@ -3,13 +3,13 @@
         <header class="section-header">
             <h3 class="section-header-title">Todolist</h3>
         </header>
-        <form class="todo-form">
+        <form class="form todo-form" @submit.prevent="addTodo">
             <label class="sr-text" for="todoInput">Ecrivez une nouvelle tâche</label>
             <input class="todo-input" id="todolistInput" type="text" v-model="todoText" placeholder="Ecrivez une nouvelle tâche">
-            <button class="btn todo-btn" type="button" @click="addTodo">Ajoutez la tâche</button>
+            <button class="btn todo-btn" type="submit">Ajoutez la tâche</button>
         </form>
         <transition name="fade">
-            <p class="todo-alert" v-if="errMessage">{{ errMessage }} <span class="todo-alert-close" @click="closeAlert">X</span> </p>
+            <p class="alert todo-alert" v-if="errMessage">{{ errMessage }} <span class="todo-alert-close" @click="closeAlert">X</span> </p>
         </transition>
         <div class="todo-container">
             <div class="todo-wrapper">
@@ -132,11 +132,6 @@ export default {
 }
 .todo-wrapper {
     grid-column: 1 / -1;
-}
-@media screen and (min-width: 1024px) {
-    .todo-wrapper {
-        grid-column: span 6;
-    }
 }
 .todo-list-item {
     margin-bottom: .5rem;

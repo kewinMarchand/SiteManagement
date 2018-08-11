@@ -12,7 +12,14 @@
                 <router-link to="/admin">admin</router-link>
             </li>
             <li class="navbar-list-item">
+                <router-link to="/profil">profil</router-link>
+            </li>
+            <li class="navbar-list-item">
+                <router-link to="/github">github</router-link>
+            </li>
+            <li class="navbar-list-item" v-if="authUser">
                 <button class="btn navbar-btn" type="button" @click="logOut">Déconnexion</button>
+                <img class="navbar-logo" :src="authUser.photoURL || 'http://www.collegiosanluigi.it/wp-content/uploads/2015/04/male-silhouette.jpg'" alt="image de profil de l'utilisateur" height="42">
             </li>
         </ul>
     </nav>
@@ -23,8 +30,11 @@ import firebase from 'firebase'
 
 export default {
   name: 'Navbar',
+  props: ['user'],
   data () {
-    return {}
+    return {
+      authUser: ''
+    }
   },
   methods: {
     logOut () {
@@ -32,13 +42,18 @@ export default {
         () => { this.$router.replace('login') }
       )
     }
+  },
+  created () {
+    firebase.auth().onAuthStateChanged(user => {
+      this.authUser = user
+    })
   }
 }
 </script>
 
 <style scoped>
 .navbar {
-    background: #AAA;
+    background: var(--textColor);
     display: flex;
     justify-content: space-between;
     position: fixed;
