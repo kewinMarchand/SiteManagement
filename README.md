@@ -1,6 +1,6 @@
 # site-management
 
-> A Vue.js / Firebase project dedicated to site management
+## A Vue.js / Firebase project dedicated to site management
 
 ### install vue command line interface
 
